@@ -1,0 +1,65 @@
+{
+	"info": {
+		"_postman_id": "003feb22-e750-4e9c-acc2-988652151ede",
+		"name": "Bolttech",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api.bolttech.dev/booking-options",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"from\":\"2019-02-02T10:10:10.000Z\",\n    \"to\":\"2019-02-02T10:10:10.000Z\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "api.bolttech.dev/booking-options",
+					"host": [
+						"api",
+						"bolttech",
+						"dev"
+					],
+					"path": [
+						"booking-options"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api.bolttech.dev/booking",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\":\"1\",\n    \"brand\":\"seat\",\n    \"model\":\"Ibiza\",\n    \"from\":\"2019-02-02T10:10:10.000Z\",\n    \"to\":\"2019-02-05T10:10:10.000Z\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "api.bolttech.dev/booking",
+					"host": [
+						"api",
+						"bolttech",
+						"dev"
+					],
+					"path": [
+						"booking"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
