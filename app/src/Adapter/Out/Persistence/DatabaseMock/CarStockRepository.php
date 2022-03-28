@@ -103,13 +103,12 @@ class CarStockRepository implements GetCarsStockPort, GetCarByModelPort
         ];
     }
 
-    public function getStockInRange(DateTimeInterface $dateTime, DateTimeInterface $to): CarStockCollection
+    public function getStockInRange(DateTimeInterface $dateTime, DateTimeInterface $to): ?CarStockCollection
     {
         // TODO: Implement with database
         // TODO: check bookings in this dates:
         //  * amount of bookings in that date must be less than stock to return this carStock
         return $this->carStocks;
-
     }
 
     public function getCarByModel(CarModelVo $model): CarStock

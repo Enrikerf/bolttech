@@ -10,5 +10,5 @@ use DateTimeInterface;
 
 interface GetCarsStockPort
 {
-    public function getStockInRange(DateTimeInterface $dateTime, DateTimeInterface $to): CarStockCollection;
+    public function getStockInRange(DateTimeInterface $dateTime, DateTimeInterface $to): ?CarStockCollection;
 }
