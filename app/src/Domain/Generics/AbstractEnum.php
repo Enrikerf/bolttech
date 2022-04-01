@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Domain\Generics;
 
+use App\Domain\Exception\DomainException;
 use ValueError;
 
 class AbstractEnum implements EnumInterface
@@ -17,17 +18,13 @@ class AbstractEnum implements EnumInterface
     }
 
     /**
-     * @throws ValueError
+     * @throws DomainException
      */
     public static function from(int|string $value): static
     {
         $res = static::tryFrom($value);
         if ($res === null) {
-            throw new ValueError(sprintf(
-                "Invalid %s value: \"%s\"",
-                static::class,
-                $value
-            ));
+            throw new DomainException();
         }
 
         return $res;

@@ -6,7 +6,7 @@ namespace App\Domain\CarStock;
 
 use App\Domain\Car\Brand;
 use App\Domain\Car\Model\CarModelVo;
-use App\Domain\Car\Price\PriceCollection;
+use App\Domain\Car\Price\PriceCollectionVo;
 use App\Domain\CarBooking\CarBookingVo;
 use ValueError;
 

@@ -6,10 +6,10 @@ namespace App\Domain\Car\Price;
 
 use DateTimeInterface;
 
-class PriceCollection
+class PriceCollectionVo
 {
 
-    public function __construct(private array $prices) {
+    public function __construct(private array $prices = []) {
         //TODO: check the congruency of the prices:
         //  need to get the whole year exactly
     }

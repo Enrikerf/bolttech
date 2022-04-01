@@ -9,5 +9,5 @@ use App\Domain\CarBooking\CarBookingVo;
 
 interface CreateBookingPort
 {
-    public function create(CarBookingVo $carBookingVo): CarBooking;
+    public function create(CarBookingVo $carBookingVo): ?CarBooking;
 }

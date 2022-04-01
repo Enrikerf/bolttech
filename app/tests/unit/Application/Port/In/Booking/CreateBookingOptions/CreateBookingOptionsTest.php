@@ -7,8 +7,9 @@ use App\Application\Port\In\Booking\CreateBookingOptions\CreateBookingOptionsHan
 use App\Application\Port\Out\Storage\CarStock\GetCarsStockPort;
 use App\Domain\Car\Brand;
 use App\Domain\Car\Model\CarModelVo;
-use App\Domain\Car\Price\Price;
-use App\Domain\Car\Price\PriceCollection;
+use App\Domain\Car\Price\PriceVo;
+use App\Domain\Car\Price\PriceCollectionVo;
+use App\Domain\CarBooking\CarBookingVo;
 use App\Domain\CarStock\CarStock;
 use App\Domain\CarStock\CarStockCollection;
 use PHPUnit\Framework\TestCase;
@@ -17,8 +18,24 @@ class CreateBookingOptionsTest extends TestCase
 {
 
     /**
+     * -------------------
      * Factors
-     *  GetCarsStockPort null/CarStockCollection
+     * -------------------
+     *  GetCarsStockPort
+     *  CarBookingVo::make
+     * -------------------
+     * Equivalence classes
+     * -------------------
+     *  GetCarsStockPort --> null/CarStockCollection
+     *  CarBookingVo::make -->  null/CarBookingVo
+     * -------------------
+     * Tests
+     * -------------------
+     * Case     GetCarsStockPort     CarBookingVo::make      result
+     * 1        null                 null                    NotFoundException
+     * 2        null                 CarBookingVo            NotFoundException
+     * 3        CarStockCollection   null                    DomainException
+     * 4        CarStockCollection   CarBookingVo            Success
      */
     public function handlerTest(){
         $command = new CreateBookingOptionsCommand();
@@ -36,10 +53,10 @@ class CreateBookingOptionsTest extends TestCase
             $seat,
             new CarModelVo($seat, "Leon"),
             3,
-            new PriceCollection([
-                new Price("Peak season", 6, 1, 15, 9, 98.43),
-                new Price("Mid season", 16, 9, 31, 10, 76.89),
-                new Price("Off-season", 1, 11, 1, 3, 53.65),
+            new PriceCollectionVo([
+                new PriceVo("Peak season", 6, 1, 15, 9, 98.43),
+                new PriceVo("Mid season", 16, 9, 31, 10, 76.89),
+                new PriceVo("Off-season", 1, 11, 1, 3, 53.65),
             ])
         );
         return new CarStockCollection([

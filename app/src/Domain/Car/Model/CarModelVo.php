@@ -5,14 +5,15 @@ declare(strict_types=1);
 namespace App\Domain\Car\Model;
 
 use App\Domain\Car\Brand;
-use Error;
+use App\Domain\Exception\DomainException;
+
 
 class CarModelVo
 {
     public function __construct(private Brand $brand, private string $model)
     {
         if (self::exists($this->brand, $this->model)) {
-            throw new Error();
+            throw new DomainException();
         }
     }
 

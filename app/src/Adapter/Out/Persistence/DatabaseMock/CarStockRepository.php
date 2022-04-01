@@ -13,8 +13,8 @@ use App\Domain\Car\Model\JaguarModel;
 use App\Domain\Car\Model\MercedesModel;
 use App\Domain\Car\Model\NissanModel;
 use App\Domain\Car\Model\SeatModel;
-use App\Domain\Car\Price\Price;
-use App\Domain\Car\Price\PriceCollection;
+use App\Domain\Car\Price\PriceVo;
+use App\Domain\Car\Price\PriceCollectionVo;
 use App\Domain\CarStock\CarStock;
 use App\Domain\CarStock\CarStockCollection;
 use DateTimeInterface;
@@ -33,57 +33,52 @@ class CarStockRepository implements GetCarsStockPort, GetCarByModelPort
 
         $seatLeon = new CarStock(
             1,
-            $seat,
             new CarModelVo($seat, "Leon"),
             3,
-            new PriceCollection([
-                new Price("Peak season", 6, 1, 15, 9, 98.43),
-                new Price("Mid season", 16, 9, 31, 10, 76.89),
-                new Price("Off-season", 1, 11, 1, 3, 53.65),
+            new PriceCollectionVo([
+                new PriceVo("Peak season", 6, 1, 15, 9, 98.43),
+                new PriceVo("Mid season", 16, 9, 31, 10, 76.89),
+                new PriceVo("Off-season", 1, 11, 1, 3, 53.65),
             ])
         );
         $seatIbiza = new CarStock(
             2,
-            $seat,
             new CarModelVo($seat, "Ibiza"),
             5,
-            new PriceCollection([
-                new Price("Peak season", 6, 1, 15, 9, 85.12),
-                new Price("Mid season", 16, 9, 31, 10, 65.73),
-                new Price("Off-season", 1, 11, 1, 3, 46.85),
+            new PriceCollectionVo([
+                new PriceVo("Peak season", 6, 1, 15, 9, 85.12),
+                new PriceVo("Mid season", 16, 9, 31, 10, 65.73),
+                new PriceVo("Off-season", 1, 11, 1, 3, 46.85),
             ])
         );
         $nissanQasqai = new CarStock(
             3,
-            $nissan,
             new CarModelVo($nissan, "Qasqai"),
             2,
-            new PriceCollection([
-                new Price("Peak season", 6, 1, 15, 9, 85.12),
-                new Price("Mid season", 16, 9, 31, 10, 65.73),
-                new Price("Off-season", 1, 11, 1, 3, 46.85),
+            new PriceCollectionVo([
+                new PriceVo("Peak season", 6, 1, 15, 9, 85.12),
+                new PriceVo("Mid season", 16, 9, 31, 10, 65.73),
+                new PriceVo("Off-season", 1, 11, 1, 3, 46.85),
             ])
         );
         $jaguarEpace = new CarStock(
             4,
-            $jaguar,
             new CarModelVo($jaguar, "e-pace"),
             1,
-            new PriceCollection([
-                new Price("Peak season", 6, 1, 15, 9, 85.12),
-                new Price("Mid season", 16, 9, 31, 10, 65.73),
-                new Price("Off-season", 1, 11, 1, 3, 46.85),
+            new PriceCollectionVo([
+                new PriceVo("Peak season", 6, 1, 15, 9, 85.12),
+                new PriceVo("Mid season", 16, 9, 31, 10, 65.73),
+                new PriceVo("Off-season", 1, 11, 1, 3, 46.85),
             ])
         );
         $mercedesVito = new CarStock(
             5,
-            $mercedes,
             new CarModelVo($mercedes, "vito"),
             1,
-            new PriceCollection([
-                new Price("Peak season", 6, 1, 15, 9, 85.12),
-                new Price("Mid season", 16, 9, 31, 10, 65.73),
-                new Price("Off-season", 1, 11, 1, 3, 46.85),
+            new PriceCollectionVo([
+                new PriceVo("Peak season", 6, 1, 15, 9, 85.12),
+                new PriceVo("Mid season", 16, 9, 31, 10, 65.73),
+                new PriceVo("Off-season", 1, 11, 1, 3, 46.85),
             ])
         );
         $this->carStocks = new CarStockCollection([
@@ -111,8 +106,8 @@ class CarStockRepository implements GetCarsStockPort, GetCarByModelPort
         return $this->carStocks;
     }
 
-    public function getCarByModel(CarModelVo $model): CarStock
+    public function getCarStockByModel(string $model):?CarStock
     {
-        return $this->models[$model->getModel()];
+        return $this->models[$model];
     }
 }

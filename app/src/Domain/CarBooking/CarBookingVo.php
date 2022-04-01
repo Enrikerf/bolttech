@@ -11,12 +11,12 @@ use ValueError;
 class CarBookingVo
 {
 
-    public static function make(CarStock $carStock, DateTimeInterface $from, DateTimeInterface $to): self
+    public static function make(CarStock $carStock, DateTimeInterface $from, DateTimeInterface $to): ?self
     {
         $nDays = $from->diff($to)->days;
         $averagePrice = $carStock->getPrices()->getAveragePriceOnRange($from, $to);
         if (!$averagePrice) {
-            throw new ValueError(sprintf("Invalid"));
+            return null;
         }
 
         return new self(

@@ -19,7 +19,7 @@ class BookingRepository implements CheckBookingAvailabilityPort,CreateBookingPor
         return true;
     }
 
-    public function create(CarBookingVo $carBookingVo): CarBooking
+    public function create(CarBookingVo $carBookingVo): ?CarBooking
     {
         // TODO: Implement create() method.
         // TODO: lock tables, check amount Of Bookings on that range < stock, create booking, unlock table

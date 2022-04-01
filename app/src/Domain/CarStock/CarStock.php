@@ -6,7 +6,8 @@ namespace App\Domain\CarStock;
 
 use App\Domain\Car\Brand;
 use App\Domain\Car\Model\CarModelVo;
-use App\Domain\Car\Price\PriceCollection;
+use App\Domain\Car\Price\PriceCollectionVo;
+use App\Domain\Exception\DomainException;
 use ValueError;
 
 
@@ -14,13 +15,12 @@ class CarStock
 {
     public function __construct(
         private int $id,
-        private Brand $brand,
         private CarModelVo $model,
         private int $stock,
-        private PriceCollection $prices,
+        private PriceCollectionVo $prices,
     ) {
         if($this->stock <0){
-            throw new ValueError("Invalid value");
+            throw new DomainException();
         }
     }
 
@@ -31,7 +31,7 @@ class CarStock
 
     public function getBrand(): Brand
     {
-        return $this->brand;
+        return $this->model->getBrand();
     }
 
     public function getModel(): CarModelVo
@@ -44,7 +44,7 @@ class CarStock
         return $this->stock;
     }
 
-    public function getPrices(): PriceCollection
+    public function getPrices(): PriceCollectionVo
     {
         return $this->prices;
     }

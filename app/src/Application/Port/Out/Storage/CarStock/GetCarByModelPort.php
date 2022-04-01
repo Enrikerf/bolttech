@@ -10,5 +10,5 @@ use App\Domain\CarStock\CarStock;
 
 interface GetCarByModelPort
 {
-    public function getCarByModel(CarModelVo $model): CarStock;
+    public function getCarStockByModel(string $model): ?CarStock;
 }

@@ -6,17 +6,24 @@ namespace App\Domain\Car\Price;
 
 use DateTimeInterface;
 
-class Price
+class PriceVo
 {
 
     public function __construct(
         private string $code,
         private int $fromMonth,
         private int $fromDay,
-        private int $toMoth,
+        private int $toMonth,
         private int $toDay,
         private float $amount,
     ) {
+    }
+
+    public function getTotalPriceOnRange(DateTimeInterface $from, DateTimeInterface $to): ?float{
+        if($from<$to){
+            return null;
+        }
+        return null;
     }
 
     public function getCode(): string
@@ -34,9 +41,9 @@ class Price
         return $this->fromDay;
     }
 
-    public function getToMoth(): int
+    public function getToMonth(): int
     {
-        return $this->toMoth;
+        return $this->toMonth;
     }
 
     public function getToDay(): int
